@@ -1,5 +1,6 @@
 import javax.swing.JFrame;
 import java.awt.Canvas;
+import java.awt.Component;
 import java.awt.Dimension;
 
 public class Window {
@@ -33,6 +34,10 @@ public class Window {
 
     public Canvas getCanvas(){
         return canvas;
+    }
+
+	public JFrame getFrame() {
+		return window;
     }
 
 }

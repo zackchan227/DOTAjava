@@ -1,7 +1,8 @@
 import java.awt.image.BufferStrategy;
+
+import javax.swing.*;
+
 import java.awt.Graphics;
-//import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
 
 public class Game implements Runnable {
 
@@ -14,37 +15,48 @@ public class Game implements Runnable {
     private BufferStrategy bs;
     private Graphics g;
 
-    private BufferedImage bi;
-    private SpriteSheet idle_front;
+    // private Animation a;
 
-    public Game() {
+    private State menuState;
+    private State gameState;
+
+    private MouseManager mm;
+
+    public Game(){
         //init();
-
+        mm = new MouseManager();
     }
 
-    private void init(){
+    private void init() {
         window = new Window();
-        Assets.init();
-        //bi = ImageLoader.loadImage("Images/Player/Zeus/zeus_idle_front.png");
-        //idle_front = new SpriteSheet(bi); 
+        menuState = new MenuState();
+        window.getFrame().addMouseListener(mm);
+        window.getFrame().addMouseMotionListener(mm);
+        window.getCanvas().addMouseListener(mm);
+        window.getCanvas().addMouseMotionListener(mm);
+       
+        State.setState(menuState);
     }
 
-    private void update(){
+    private void update() {
+        if (State.getState() != null) {
+            State.getState().update();
+
+        }
 
     }
 
-    private void draw(){
+    private void paint() {
         bs = window.getCanvas().getBufferStrategy();
-        if(bs == null){
+        if (bs == null) {
             window.getCanvas().createBufferStrategy(3);
             return;
         }
         g = bs.getDrawGraphics();
         g.clearRect(0, 0, 480, 360);
 
-        g.drawImage(Assets.background,0,0,null);
-        g.drawImage(Assets.player_idle_front[0],223,160,null);
-       
+        if (State.getState() != null)
+            State.getState().paint(g);
 
         bs.show();
         g.dispose();
@@ -54,14 +66,14 @@ public class Game implements Runnable {
         // TODO Auto-generated method stub
         init();
 
-        while(running){
+        while (running) {
             update();
-            draw();
+            paint();
         }
     }
 
     public synchronized void start() {
-        if(running){
+        if (running) {
             return;
         }
         running = true;
@@ -70,7 +82,7 @@ public class Game implements Runnable {
     }
 
     public synchronized void stop() {
-        if(!running){
+        if (!running) {
             return;
         }
         running = false;
@@ -80,5 +92,9 @@ public class Game implements Runnable {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+    }
+
+    public MouseManager getMouseManager(){
+        return mm;
     }
 }
