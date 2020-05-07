@@ -1,7 +1,4 @@
 import java.awt.image.BufferStrategy;
-
-import javax.swing.*;
-
 import java.awt.Graphics;
 
 public class Game implements Runnable {
@@ -30,12 +27,13 @@ public class Game implements Runnable {
     private void init() {
         window = new Window();
         menuState = new MenuState();
+        gameState = new GameState();
         window.getFrame().addMouseListener(mm);
         window.getFrame().addMouseMotionListener(mm);
         window.getCanvas().addMouseListener(mm);
         window.getCanvas().addMouseMotionListener(mm);
        
-        State.setState(menuState);
+        State.setState(gameState);
     }
 
     private void update() {
