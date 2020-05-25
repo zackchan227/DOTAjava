@@ -22,8 +22,6 @@ public class Assets {
         SpriteSheet attack_left = new SpriteSheet(ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_left.png"));
         SpriteSheet attack_right = new SpriteSheet(ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_right.png"));
 
-
-
         // Enemy's textures
         SpriteSheet move_right = new SpriteSheet(ImageLoader.loadImage("../Images/Creep/jugg.png"));
         SpriteSheet move_left = new SpriteSheet(ImageLoader.loadImage("../Images/Creep/jugg.png"));
@@ -49,6 +47,81 @@ public class Assets {
         player_idle_right[0] = idle_right.crop(0, 0, 32, 32);
         player_idle_right[1] = idle_right.crop(32, 0, 32, 32);
         player_idle_right[2] = idle_right.crop(0, 32, 32, 32);
+
+        player_attack_front = new BufferedImage[9];
+        player_attack_front[0] = attack_front.crop(15, 1, 32, 32);
+        player_attack_front[1] = attack_front.crop(79, 1, 32, 32);
+        player_attack_front[2] = attack_front.crop(143, 1, 32, 32);
+        player_attack_front[3] = attack_front.crop(15, 63, 32, 64);
+        player_attack_front[4] = attack_front.crop(79, 63, 36, 64);
+        player_attack_front[5] = attack_front.crop(143, 63, 36, 64);
+        player_attack_front[6] = attack_front.crop(15, 125, 36, 64);
+        player_attack_front[7] = attack_front.crop(79, 125, 36, 64);
+        player_attack_front[8] = attack_front.crop(143, 125, 36, 64);
+
+        player_attack_back = new BufferedImage[9];
+        player_attack_back[0] = attack_back.crop(15, 29, 32, 32);
+        player_attack_back[1] = attack_back.crop(80, 29, 32, 32);
+        player_attack_back[2] = attack_back.crop(143, 29, 32, 32);
+        player_attack_back[3] = attack_back.crop(15, 63, 32, 64);
+        player_attack_back[4] = attack_back.crop(80, 63, 36, 64);
+        player_attack_back[5] = attack_back.crop(143, 63, 36, 64);
+        player_attack_back[6] = attack_back.crop(15, 125, 36, 64);
+        player_attack_back[7] = attack_back.crop(80, 125, 36, 64);
+        player_attack_back[8] = attack_back.crop(143, 125, 36, 64);
+
+        player_attack_left = new BufferedImage[12];
+        player_attack_left[0] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_left_1.png");
+        player_attack_left[1] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_left_2.png");
+        player_attack_left[2] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_left_3.png");
+        player_attack_left[3] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_left_4.png");
+        player_attack_left[4] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_left_5.png");
+        player_attack_left[5] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_left_6.png");
+        player_attack_left[6] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_left_7.png");
+        player_attack_left[7] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_left_8.png");
+        player_attack_left[8] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_left_9.png");
+        player_attack_left[9] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_left_10.png");
+        player_attack_left[10] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_left_11.png");
+        player_attack_left[11] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_left_12.png");
+        // player_attack_left[0] = attack_left.crop(40, 1, 33, 64);
+        // player_attack_left[1] = attack_left.crop(120, 1, 32, 64);
+        // player_attack_left[2] = attack_left.crop(196, 1, 32, 64);
+        // player_attack_left[3] = attack_left.crop(40, 79, 34, 64);
+        // player_attack_left[4] = attack_left.crop(120, 79, 32, 64);
+        // player_attack_left[5] = attack_left.crop(192, 79, 35, 64);
+        // player_attack_left[6] = attack_left.crop(0, 157, 84, 64);
+        // player_attack_left[7] = attack_left.crop(60, 157, 84, 64);
+        // player_attack_left[8] = attack_left.crop(120, 157, 84, 64);
+        // player_attack_left[9] = attack_left.crop(0, 236, 84, 64);
+        // player_attack_left[10] = attack_left.crop(60, 236, 84, 64);
+        // player_attack_left[11] = attack_left.crop(120, 236, 84, 64);
+
+        player_attack_right = new BufferedImage[12];
+        player_attack_right[0] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_right_1.png");
+        player_attack_right[1] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_right_2.png");
+        player_attack_right[2] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_right_3.png");
+        player_attack_right[3] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_right_4.png");
+        player_attack_right[4] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_right_5.png");
+        player_attack_right[5] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_right_6.png");
+        player_attack_right[6] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_right_7.png");
+        player_attack_right[7] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_right_8.png");
+        player_attack_right[8] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_right_9.png");
+        player_attack_right[9] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_right_10.png");
+        player_attack_right[10] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_right_11.png");
+        player_attack_right[11] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_right_12.png");
+        // player_attack_right[0] = attack_right.crop(15, 1, 32, 32);
+        // player_attack_right[1] = attack_right.crop(79, 1, 32, 32);
+        // player_attack_right[2] = attack_right.crop(143, 1, 32, 32);
+        // player_attack_right[3] = attack_right.crop(15, 63, 32, 64);
+        // player_attack_right[4] = attack_right.crop(79, 63, 36, 64);
+        // player_attack_right[5] = attack_right.crop(143, 63, 36, 64);
+        // player_attack_right[6] = attack_right.crop(15, 125, 36, 64);
+        // player_attack_right[7] = attack_right.crop(79, 125, 36, 64);
+        // player_attack_right[8] = attack_right.crop(143, 125, 36, 64);
+        // player_attack_right[9] = attack_right.crop(15, 125, 36, 64);
+        // player_attack_right[10] = attack_right.crop(79, 125, 36, 64);
+        // player_attack_right[11] = attack_right.crop(143, 125, 36, 64);
+        
 
         enemy_move_bot = new BufferedImage[4];
         enemy_move_bot[0] = move_bot.crop(0, 0, 46, 62);

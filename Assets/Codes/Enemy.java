@@ -6,8 +6,8 @@ public class Enemy extends Entity {
 
     private Animation a;
 
-    public Enemy(float x, float y) {
-        super(x, y);
+    public Enemy(float x, float y, short w, short h) {
+        super(x, y, w, h);
         a = new Animation(69, Assets.enemy_move_bot);
     }
 
@@ -21,8 +21,7 @@ public class Enemy extends Entity {
     public void paint(Graphics g) {
         // TODO Auto-generated method stub
         g.drawImage(Assets.background, 0, 0, null);
-        g.drawImage(a.getCurrentFrame(), (int)x, (int)y, null);
-        
+        g.drawImage(a.getCurrentFrame(), (int) x, (int) y, null);
 
     }
 }

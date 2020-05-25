@@ -13,7 +13,7 @@ public class GameState extends State {
 
     public GameState(Game game){
        super(game);
-       p = new Player(game,223,160);
+       p = new Player(game,223,160,(short)32,(short)32);
        a_top = new Animation(69, Assets.enemy_move_bot);
        a_bot = new Animation(69, Assets.enemy_move_top);
        a_right = new Animation(69, Assets.enemy_move_left);
