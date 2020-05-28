@@ -28,6 +28,10 @@ public class Game implements Runnable {
         km = new KeyManager();
     }
 
+    public State getGameState() {
+        return gameState;
+    }
+
     private void init(){
         window = new Window();
         menuState = new MenuState(this);    
@@ -38,7 +42,7 @@ public class Game implements Runnable {
         window.getCanvas().addMouseListener(mm);
         window.getCanvas().addMouseMotionListener(mm);
        
-        State.setState(gameState);
+        State.setState(menuState);
     }
 
     private void update() {
