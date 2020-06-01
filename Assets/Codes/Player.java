@@ -5,7 +5,7 @@ import java.awt.Graphics;
 public class Player extends Entity {
 
     private Animation a;
-    private Game g;
+    private Game game;
     private boolean isFaceFront, isFaceBack, isFaceRight, isFaceLeft;
 
     public static final float DEFAULT_X = 223.0f;
@@ -13,7 +13,7 @@ public class Player extends Entity {
 
     public Player(Game g, float x, float y, short w, short h) {
         super(x, y, w, h);
-        this.g = g;
+        this.game = g;
         Assets.init();
         a = new Animation(69, Assets.player_idle_front);
         isFaceBack = false;
@@ -31,7 +31,7 @@ public class Player extends Entity {
     public void update() {
         // TODO Auto-generated method stub
 
-        if (g.getKeyManager().up) {
+        if (game.getKeyManager().up) {
             isFaceBack = true;
             isFaceFront = false;
             isFaceLeft = false;
@@ -44,7 +44,7 @@ public class Player extends Entity {
             a = new Animation(69, Assets.player_idle_back);
         }
 
-        if (g.getKeyManager().down) {
+        if (game.getKeyManager().down) {
             isFaceBack = false;
             isFaceFront = true;
             isFaceLeft = false;
@@ -57,7 +57,7 @@ public class Player extends Entity {
             a = new Animation(69, Assets.player_idle_front);
         }
 
-        if (g.getKeyManager().left) {
+        if (game.getKeyManager().left) {
             isFaceBack = false;
             isFaceFront = false;
             isFaceLeft = true;
@@ -70,7 +70,7 @@ public class Player extends Entity {
             a = new Animation(69, Assets.player_idle_left);
         }
 
-        if (g.getKeyManager().right) {
+        if (game.getKeyManager().right) {
             isFaceBack = false;
             isFaceFront = false;
             isFaceLeft = false;

@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 
 public class Assets {
 
-    public static BufferedImage background, buttonPlay;
+    public static BufferedImage background, buttonPlay, name[];
     public static BufferedImage player_idle_front[], player_idle_back[], player_idle_left[], player_idle_right[];
     public static BufferedImage enemy_move_right[], enemy_move_left[], enemy_move_top[], enemy_move_bot[];
     public static BufferedImage player_attack_front[], player_attack_back[], player_attack_left[], player_attack_right[];
@@ -19,8 +19,8 @@ public class Assets {
 
         SpriteSheet attack_front = new SpriteSheet(ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_front.png"));
         SpriteSheet attack_back = new SpriteSheet(ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_back.png"));
-        SpriteSheet attack_left = new SpriteSheet(ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_left.png"));
-        SpriteSheet attack_right = new SpriteSheet(ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_right.png"));
+        // SpriteSheet attack_left = new SpriteSheet(ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_left.png"));
+        // SpriteSheet attack_right = new SpriteSheet(ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_right.png"));
 
         // Enemy's textures
         SpriteSheet move_right = new SpriteSheet(ImageLoader.loadImage("../Images/Creep/jugg.png"));
@@ -149,6 +149,15 @@ public class Assets {
 
         background = ImageLoader.loadImage("../Images/BackGround/bg_level_1.png");
         buttonPlay = ImageLoader.loadImage("../Images/Other/buttonplay.png");
+        
+        name = new BufferedImage[5];
+        name[0] = ImageLoader.loadImage("../Images/Other/DOTA/dota1.png");
+        name[1] = ImageLoader.loadImage("../Images/Other/DOTA/dota2.png");
+        name[2] = ImageLoader.loadImage("../Images/Other/DOTA/dota3.png");
+        name[3] = ImageLoader.loadImage("../Images/Other/DOTA/dota4.png");
+        name[4] = ImageLoader.loadImage("../Images/Other/DOTA/dota5.png");
+
+
 
     }
 }

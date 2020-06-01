@@ -1,54 +1,92 @@
 package Assets.Codes;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
+// import java.io.File;
+// import java.io.IOException;
 
+import javax.swing.JOptionPane;
 
 public class MenuState extends State {
 
-
     private int currentChoice = 0;
-    private String[] options = {
-            "Start",
-            "Help",
-            "Quit"
-    };
-
-    private Color titleColor;
-    private Font titleFont;
+    private String[] options = { "Start", "Help", "Quit" };
+    // private Color titleColor;
+    // private Font titleFont;
 
     private Font font;
+
+    private Animation title;
 
     public MenuState(Game game) {
         super(game);
         Assets.init();
 
-        titleColor = new Color(128, 0, 0);
-        titleFont = new Font("Century Gothic", Font.PLAIN, 35);
-        font = new Font("Arial", Font.PLAIN, 15);
+        // try {
+        // GraphicsEnvironment ge =
+        // GraphicsEnvironment.getLocalGraphicsEnvironment();
+        // ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new
+        // File("../Font/CuteFont.TTF")));
+        // } catch (IOException|FontFormatException e) {
+        // //Handle exception
+        // }
 
+        // titleColor = new Color(128, 0, 0);
+        // titleFont = new Font("Century Gothic", Font.PLAIN, 35);
+        font = new Font("", Font.BOLD, 30);
+
+        title = new Animation(60, Assets.name);
     }
-
 
     @Override
     public void update() {
         // TODO Auto-generated method stub
         if (game.getKeyManager().enter) {
             select();
-        }
-        if (game.getKeyManager().up) {
-            currentChoice--;
-            if (currentChoice == -1) {
-                currentChoice = options.length - 1;
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
             }
         }
-        if (game.getKeyManager().down) {
-            currentChoice++;
-            if (currentChoice == options.length) {
-                currentChoice = 0;
+        if (game.getKeyManager().up) {        
+            
+            try {
+                Thread.sleep(200);
+                if(currentChoice == 2){
+                    currentChoice = 1;
+                }
+                else if(currentChoice == 1){
+                    currentChoice = 0;
+                }
+                else {
+                    currentChoice = 2;
+                }
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
             }
         }
+        if (game.getKeyManager().down) {        
+           
 
+            try {
+                Thread.sleep(200);
+                if(currentChoice == 0){
+                    currentChoice = 1;
+                }
+                else if(currentChoice == 1){
+                    currentChoice = 2;
+                }
+                else {
+                    currentChoice = 0;
+                }
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+        title.update();
 
     }
 
@@ -56,20 +94,22 @@ public class MenuState extends State {
     public void paint(Graphics g) {
         // TODO Auto-generated method stub
         g.drawImage(Assets.background, 0, 0, null);
-        //g.drawImage(Assets.buttonPlay, 165, 150, null);
-        g.setColor(titleColor);
-        g.setFont(titleFont);
-        g.drawString("DOTA GAME", 145, 60);
+        // g.drawImage(Assets.buttonPlay, 165, 150, null);
+        // g.setColor(titleColor);
+        // g.setFont(titleFont);
+        // g.drawString("DOTA", 195, 60);
+        g.drawImage(title.getCurrentFrame(), 120, 30, null);
 
-        //draw menu options
+        // draw menu options
         g.setFont(font);
+
         for (int i = 0; i < options.length; i++) {
             if (i == currentChoice) {
-                g.setColor(Color.BLACK);
+                g.setColor(Color.YELLOW);
             } else {
-                g.setColor(Color.yellow);
+                g.setColor(Color.BLACK);
             }
-            g.drawString(options[i], 225, 142 + i * 25);
+            g.drawString(options[i], 205, 160 + i * 50);
         }
     }
 
@@ -78,7 +118,7 @@ public class MenuState extends State {
             State.setState(game.getGameState());
         }
         if (currentChoice == 1) {
-
+            JOptionPane.showMessageDialog(null, "Use arrow key to attack the enemy", "Guide", 1);
         }
         if (currentChoice == 2) {
             System.exit(0);

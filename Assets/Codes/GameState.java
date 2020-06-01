@@ -5,38 +5,36 @@ import java.awt.Graphics;
 public class GameState extends State {
 
     private Player p;
-    private Enemy e;
-    private Animation a_top;
-    private Animation a_bot;
-    private Animation a_left;
-    private Animation a_right;
+    private Enemy e_top;
+    private Enemy e_bot;
+    private Enemy e_left;
+    private Enemy e_right;
 
     public GameState(Game game){
        super(game);
        p = new Player(game,223,160,(short)32,(short)32);
-       a_top = new Animation(69, Assets.enemy_move_bot);
-       a_bot = new Animation(69, Assets.enemy_move_top);
-       a_right = new Animation(69, Assets.enemy_move_left);
-       a_left = new Animation(69, Assets.enemy_move_right);
+       e_top = new Enemy(game,215,30,(short)32,(short)32,(short)1);
+       e_bot = new Enemy(game,215,210,(short)32,(short)32,(short)2);
+       e_left = new Enemy(game,35,130,(short)32,(short)32,(short)3);
+       e_right = new Enemy(game,400,130,(short)32,(short)32,(short)4);
+       
        //e = new Enemy(215,50);
     }
 
     public void update(){
        p.update();
-       a_top.update();
-       a_bot.update();
-       a_left.update();
-       a_right.update();
-       //e.update();
+       e_top.update();
+       e_bot.update();
+       e_left.update();
+       e_right.update();
     }
 
     public void paint(Graphics g){
       g.drawImage(Assets.background, 0, 0, null);
-      g.drawImage(a_top.getCurrentFrame(),215,30,null);
-      g.drawImage(a_bot.getCurrentFrame(),215,210,null);
-      g.drawImage(a_left.getCurrentFrame(),35,130,null);
-      g.drawImage(a_right.getCurrentFrame(),400,130,null);
       p.paint(g);
-      //e.paint(g);
+      e_top.paint(g);
+      e_bot.paint(g);
+      e_left.paint(g);
+      e_right.paint(g);
     }
 }
