@@ -6,8 +6,8 @@ public class Spawner extends Entity {
     private Enemy[] ales;
     private Game game;
 
-    public Spawner(Game g, float x, float y, short w, short h) {
-        super(x,y,w,h);
+    public Spawner(Game g, float x, float y) {
+        super(x,y);
         this.game = g;
         
     }

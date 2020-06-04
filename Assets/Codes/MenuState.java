@@ -34,7 +34,7 @@ public class MenuState extends State {
         // titleFont = new Font("Century Gothic", Font.PLAIN, 35);
         font = new Font("", Font.BOLD, 30);
 
-        title = new Animation(60, Assets.name);
+        title = new Animation(10, Assets.name);
     }
 
     @Override
