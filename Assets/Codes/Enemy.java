@@ -7,8 +7,12 @@ public class Enemy extends Entity {
     private Animation a;
     private short direction;
     private float movementSpeed = 0.05f;
-    
+
     public static final short fps = 20;
+
+    public short getDirection() {
+        return direction;
+    }
 
     public Enemy(float x, float y, short direct) {
         super(x, y);
