@@ -17,6 +17,8 @@ public class MenuState extends State {
 
     private Animation title;
 
+    private Audio au1, au2, au;
+
     public MenuState(Game game) {
         super(game);
         Assets.init();
@@ -35,12 +37,16 @@ public class MenuState extends State {
         font = new Font("", Font.BOLD, 30);
 
         title = new Animation(10, Assets.name);
+        au1 = new Audio("Ping.wav");
+        au2 = new Audio("select.wav");
+        au = new Audio("templeoftime.wav");
     }
 
     @Override
     public void update() {
         // TODO Auto-generated method stub
         if (game.getKeyManager().enter) {
+            au1.play();
             select();
             try {
                 Thread.sleep(100);
@@ -49,17 +55,15 @@ public class MenuState extends State {
                 e.printStackTrace();
             }
         }
-        if (game.getKeyManager().up) {        
-            
+        if (game.getKeyManager().up) {
+            au2.play();
             try {
                 Thread.sleep(200);
-                if(currentChoice == 2){
+                if (currentChoice == 2) {
                     currentChoice = 1;
-                }
-                else if(currentChoice == 1){
+                } else if (currentChoice == 1) {
                     currentChoice = 0;
-                }
-                else {
+                } else {
                     currentChoice = 2;
                 }
             } catch (InterruptedException e) {
@@ -67,18 +71,15 @@ public class MenuState extends State {
                 e.printStackTrace();
             }
         }
-        if (game.getKeyManager().down) {        
-           
-
+        if (game.getKeyManager().down) {
+            au2.play();
             try {
                 Thread.sleep(200);
-                if(currentChoice == 0){
+                if (currentChoice == 0) {
                     currentChoice = 1;
-                }
-                else if(currentChoice == 1){
+                } else if (currentChoice == 1) {
                     currentChoice = 2;
-                }
-                else {
+                } else {
                     currentChoice = 0;
                 }
             } catch (InterruptedException e) {
@@ -116,6 +117,8 @@ public class MenuState extends State {
     private void select() {
         if (currentChoice == 0) {
             State.setState(game.getGameState());
+            au.play();
+
         }
         if (currentChoice == 1) {
             JOptionPane.showMessageDialog(null, "Use arrow key to attack the enemy", "Guide", 1);

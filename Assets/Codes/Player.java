@@ -2,14 +2,15 @@ package Assets.Codes;
 
 import javax.swing.*;
 import java.awt.Graphics;
-import java.util.ArrayList;
 
 public class Player extends Entity {
 
     private Animation a;
     private Game game;
+    private Audio au;
     private boolean isFaceFront, isFaceBack, isFaceRight, isFaceLeft;
     private int score;
+    private int tap;
     private int attackRange = 50;
     public static final short fps = 30;
 
@@ -26,6 +27,8 @@ public class Player extends Entity {
         isFaceLeft = false;
         isFaceRight = false;
         score = 0;
+        tap = 0;
+        au = new Audio("coins.wav");
     }
 
     public void resetPosition() {
@@ -33,11 +36,20 @@ public class Player extends Entity {
         this.setY(DEFAULT_Y);
     }
 
+    public int getScore() {
+        return this.score;
+    }
+
+    public int getTap() {
+        return this.tap;
+    }
+
     @Override
     public void update() {
         // TODO Auto-generated method stub
 
         if (game.getKeyManager().up) {
+            tap++;
             this.resetPosition();
             isFaceBack = true;
             isFaceFront = false;
@@ -52,6 +64,7 @@ public class Player extends Entity {
         }
 
         if (game.getKeyManager().down) {
+            tap++;
             this.resetPosition();
             isFaceBack = false;
             isFaceFront = true;
@@ -66,6 +79,7 @@ public class Player extends Entity {
         }
 
         if (game.getKeyManager().left) {
+            tap++;
             this.resetPosition();
             isFaceBack = false;
             isFaceFront = false;
@@ -80,6 +94,7 @@ public class Player extends Entity {
         }
 
         if (game.getKeyManager().right) {
+            tap++;
             this.resetPosition();
             isFaceBack = false;
             isFaceFront = false;
@@ -107,7 +122,8 @@ public class Player extends Entity {
     public boolean checkAttack(Enemy e) {
         GameState gameState;
         if (e.getDirection() == 4) {
-            if (this.game.getKeyManager().right && e.getX() > 223.0F && e.getX() < (float)(223 + this.attackRange)) {
+            if (this.game.getKeyManager().right && e.getX() > 223.0F && e.getX() < (float) (223 + this.attackRange)) {
+                au.play();
                 ++this.score;
                 return true;
             }
@@ -121,7 +137,8 @@ public class Player extends Entity {
         }
 
         if (e.getDirection() == 3) {
-            if (this.game.getKeyManager().left && e.getX() < 223.0F && e.getX() > (float)(223 - this.attackRange)) {
+            if (this.game.getKeyManager().left && e.getX() < 223.0F && e.getX() > (float) (223 - this.attackRange)) {
+                au.play();
                 ++this.score;
                 return true;
             }
@@ -135,7 +152,8 @@ public class Player extends Entity {
         }
 
         if (e.getDirection() == 1) {
-            if (this.game.getKeyManager().up && e.getY() < 130.0F && e.getY() > (float)(130 - this.attackRange)) {
+            if (this.game.getKeyManager().up && e.getY() < 130.0F && e.getY() > (float) (130 - this.attackRange)) {
+                au.play();
                 ++this.score;
                 return true;
             }
@@ -149,7 +167,8 @@ public class Player extends Entity {
         }
 
         if (e.getDirection() == 2) {
-            if (this.game.getKeyManager().down && e.getY() > 130.0F && e.getY() < (float)(130 + this.attackRange)) {
+            if (this.game.getKeyManager().down && e.getY() > 130.0F && e.getY() < (float) (130 + this.attackRange)) {
+                au.play();
                 ++this.score;
                 return true;
             }

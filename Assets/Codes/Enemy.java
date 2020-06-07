@@ -10,10 +10,6 @@ public class Enemy extends Entity {
 
     public static final short fps = 20;
 
-    public short getDirection() {
-        return direction;
-    }
-
     public Enemy(float x, float y, short direct) {
         super(x, y);
         Assets.init();
@@ -48,10 +44,10 @@ public class Enemy extends Entity {
                 this.setY(this.getY() - movementSpeed);
                 break;
             case 3:
-                this.setX(this.getX() + movementSpeed*2);
+                this.setX(this.getX() + movementSpeed * 2);
                 break;
             case 4:
-                this.setX(this.getX() - movementSpeed*2);
+                this.setX(this.getX() - movementSpeed * 2);
                 break;
             default:
                 break;
@@ -63,5 +59,9 @@ public class Enemy extends Entity {
     public void paint(Graphics g) {
         // TODO Auto-generated method stub
         g.drawImage(a.getCurrentFrame(), (int) x, (int) y, null);
+    }
+
+    public short getDirection() {
+        return direction;
     }
 }

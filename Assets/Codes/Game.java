@@ -9,12 +9,11 @@ public class Game implements Runnable {
 
     private Thread thread;
 
-    private boolean running = false;
+    private boolean isRunning = false;
+    private boolean isPause = false;
 
     private BufferStrategy bs;
     private Graphics g;
-
-    // private Animation a;
 
     private State menuState;
     private State gameState;
@@ -22,26 +21,29 @@ public class Game implements Runnable {
     private MouseManager mm;
     private KeyManager km;
 
+    private Audio au;
+
     public Game() {
         // init();
         mm = new MouseManager();
         km = new KeyManager();
+        au = new Audio("templeoftime.wav");
     }
 
     public State getGameState() {
         return gameState;
     }
 
-    private void init(){
+    private void init() {
         window = new Window();
-        menuState = new MenuState(this);    
+        menuState = new MenuState(this);
         gameState = new GameState(this);
         window.getFrame().addKeyListener(km);
         window.getFrame().addMouseListener(mm);
         window.getFrame().addMouseMotionListener(mm);
         window.getCanvas().addMouseListener(mm);
         window.getCanvas().addMouseMotionListener(mm);
-       
+
         State.setState(menuState);
     }
 
@@ -73,30 +75,34 @@ public class Game implements Runnable {
     public void run() {
         init();
 
-        while (running) {
+        while (isRunning) {
             update();
             paint();
         }
     }
 
-    public KeyManager getKeyManager(){
+    public KeyManager getKeyManager() {
         return km;
     }
 
+    public boolean isRunning() {
+        return isRunning;
+    }
+
     public synchronized void start() {
-        if (running) {
+        if (isRunning) {
             return;
         }
-        running = true;
+        isRunning = true;
         thread = new Thread(this);
         thread.start();
     }
 
     public synchronized void stop() {
-        if (!running) {
+        if (!isRunning) {
             return;
         }
-        running = false;
+        isRunning = false;
         try {
             thread.join();
         } catch (final InterruptedException e) {
@@ -105,7 +111,8 @@ public class Game implements Runnable {
         }
     }
 
-    public MouseManager getMouseManager(){
+    public MouseManager getMouseManager() {
         return mm;
     }
+
 }
