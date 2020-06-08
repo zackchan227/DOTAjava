@@ -1,90 +1,36 @@
 package Assets.Codes;
 
+import javax.sound.sampled.*;
 import java.io.IOException;
-import java.io.InputStream;
 
-import sun.audio.AudioData;
-import sun.audio.AudioPlayer;
-import sun.audio.AudioStream;
-import sun.audio.ContinuousAudioDataStream;
+public class Audio{
 
-public class Audio {
+    private Clip clip;
 
-    // current status of clip
-    private boolean isPause;
-
-    private String fileName;
-
-    // constructor to initialize streams and clip
-    public Audio(String file) {
-        fileName = file;
-    }
-
-    // Method to play the audio
-    public void play() {
-        // start the clip
-        AudioStream as;
-
-        InputStream in;
-        try {
-            in = getClass().getResourceAsStream("../Sounds/" + fileName);
-            as = new AudioStream(in);
-            AudioPlayer.player.start(as);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
+    public Audio(String sound){
+        try{
+            AudioInputStream audio = AudioSystem.getAudioInputStream(getClass().getResource(sound));
+            clip = AudioSystem.getClip();
+            clip.open(audio);
+        } catch (UnsupportedAudioFileException e) {
             e.printStackTrace();
-        }
-        
-
-        isPause = false;
-    }
-
-    public void loop(){
-        AudioStream as;
-        InputStream in;
-        try {
-            in = getClass().getResourceAsStream("../Sounds/" + fileName);
-            as = new AudioStream(in);
-            AudioData ad = as.getData();
-
-            AudioPlayer.player.start(new ContinuousAudioDataStream(ad));
         } catch (IOException e) {
-            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (LineUnavailableException e) {
             e.printStackTrace();
         }
     }
 
-    // Method to pause the audio
-    public void pause() {
-        if (isPause) {
-            return;
-        }
-        AudioStream as;
+    public Clip getClip() {return clip;}
 
-        InputStream in;
-        try {
-            in = getClass().getResourceAsStream("../Sounds/" + fileName);
-            as = new AudioStream(in);
-            AudioPlayer.player.stop(as);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        
-        isPause = true;
-    }
+    public void play() {clip.start();}
 
-    // Method to resume the audio
-    public void resume() {
-        if (!isPause) {
-            return;
-        }
-        this.play();
-    }
+    public void stop() {clip.stop();}
 
-    // Method to restart the audio
-    public void restart() {
-        this.play();
+    public static void playSound(String sound){
+        Audio s = new Audio(sound);
+        s.play();
     }
 
 }
+
