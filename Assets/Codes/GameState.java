@@ -15,7 +15,10 @@ public class GameState extends State {
         p = new Player(game, 223, 160);
         c = new Controller(this);
         isPause = false;
-        au = new Audio("templeoftime.wav");
+        //au = new Audio("templeoftime.wav");
+        au = new Audio("/Assets/Sounds/templeoftime.wav");
+        au.play();
+
     }
 
     public void update() {
@@ -24,8 +27,9 @@ public class GameState extends State {
             c.update(p);
             if (game.getKeyManager().pause) {
                 isPause = true;
+                au.stop();
                 try {
-                    Thread.sleep(100);
+                    Thread.sleep(200);
                 } catch (InterruptedException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -34,8 +38,9 @@ public class GameState extends State {
         } else {
             if (game.getKeyManager().pause) {
                 isPause = false;
+                au.play();
                 try {
-                    Thread.sleep(100);
+                    Thread.sleep(200);
                 } catch (InterruptedException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -52,6 +57,7 @@ public class GameState extends State {
         g.setFont(font);
         // g.drawString("Tap: "+p.getTap(),20,350);
         g.drawString("Score: " + p.getScore(), 20, 300);
+        g.drawString("High score: " + p.getHighScore(), 20, 330);
         if(isPause){
             font = new Font("", Font.BOLD, 100);
             g.setFont(font);
