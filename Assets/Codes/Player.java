@@ -2,18 +2,19 @@ package Assets.Codes;
 
 import javax.swing.*;
 import java.awt.Graphics;
-import java.io.*;
 
 public class Player extends Entity {
 
     private Animation a;
     private Game game;
-    private String au;
+    private Audio au;
     private boolean isFaceFront, isFaceBack, isFaceRight, isFaceLeft;
     private int score = 0;
     private int highScore = 0;
+    private boolean isDead;
     private int tap;
     private int attackRange = 50;
+
     public static final short fps = 30;
 
     public static final float DEFAULT_X = 223.0f;
@@ -29,72 +30,8 @@ public class Player extends Entity {
         isFaceLeft = false;
         isFaceRight = false;
         tap = 0;
-        //au = new Audio("coins.wav");
-        au = "/Assets/Sounds/coins.wav";
-        loadHighScore();
-    }
-
-    public void resetPosition() {
-        this.setX(DEFAULT_X);
-        this.setY(DEFAULT_Y);
-    }
-
-    public int getScore() {
-        return this.score;
-    }
-
-    public int getHighScore() {
-        return highScore;
-    }
-
-    public int getTap() {
-        return this.tap;
-    }
-
-    private String saveDataPath;
-    private String fileName= "Score data";
-
-    private void createSaveData(){
-        try{
-            File file = new File(saveDataPath,fileName);
-            FileWriter output = new FileWriter(file);
-            BufferedWriter writer = new BufferedWriter(output);
-            writer.write(""+0);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-
-    private void loadHighScore(){
-        try{
-            File f = new File(saveDataPath,fileName);
-            if(!f.isFile()){
-                createSaveData();
-            }
-
-            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(f)));
-            highScore = Integer.parseInt(reader.readLine());
-            reader.close();
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-    }
-
-    private void setHighscore(){
-        FileWriter output = null;
-
-        try{
-            File f = new File(saveDataPath,fileName);
-            output = new FileWriter(f);
-            BufferedWriter writer = new BufferedWriter(output);
-
-
-            writer.write("" + highScore);
-
-            writer.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        isDead = false;
+        au = new Audio();
     }
 
     @Override
@@ -161,7 +98,7 @@ public class Player extends Entity {
             a = new Animation(fps, Assets.player_idle_right);
         }
 
-        if(score > highScore){
+        if (score > highScore) {
             highScore = score;
         }
         a.update();
@@ -176,73 +113,81 @@ public class Player extends Entity {
     }
 
     public boolean checkAttack(Enemy e) {
-        GameState gameState;
         if (e.getDirection() == 4) {
             if (this.game.getKeyManager().right && e.getX() > 223.0F && e.getX() < (float) (223 + this.attackRange)) {
-                //  au.play();
-                Audio.playSound(au);
+                au.playOneShot("coins.wav");
                 ++this.score;
                 return true;
             }
 
             if (e.getX() <= 223.0F) {
-                JOptionPane.showMessageDialog(null, this.score);
-                setHighscore();
-                this.score = 0;
-                gameState = new GameState(this.game);
-                State.setState(gameState);
+                isDead = true;
             }
         }
 
         if (e.getDirection() == 3) {
             if (this.game.getKeyManager().left && e.getX() < 223.0F && e.getX() > (float) (223 - this.attackRange)) {
-                //  au.play();
-                Audio.playSound(au);
+                au.playOneShot("coins.wav");
                 ++this.score;
                 return true;
             }
 
             if (e.getX() >= 223.0F) {
-                JOptionPane.showMessageDialog(null, this.score);
-                setHighscore();
-                this.score = 0;
-                gameState = new GameState(this.game);
-                State.setState(gameState);
+                isDead = true;
             }
         }
 
         if (e.getDirection() == 1) {
             if (this.game.getKeyManager().up && e.getY() < 130.0F && e.getY() > (float) (130 - this.attackRange)) {
-                //   au.play();
-                Audio.playSound(au);
+                au.playOneShot("coins.wav");
                 ++this.score;
                 return true;
             }
 
             if (e.getY() >= 130.0F) {
-                JOptionPane.showMessageDialog(null, this.score);
-                setHighscore();
-                this.score = 0;
-                gameState = new GameState(this.game);
-                State.setState(gameState);
+                isDead = true;
             }
         }
 
         if (e.getDirection() == 2) {
             if (this.game.getKeyManager().down && e.getY() > 130.0F && e.getY() < (float) (130 + this.attackRange)) {
-                //   au.play();
-                Audio.playSound(au);
+                au.playOneShot("coins.wav");
                 ++this.score;
                 return true;
             }
             if (e.getY() <= 130.0F) {
-                JOptionPane.showMessageDialog(null, this.score);
-                setHighscore();
-                this.score = 0;
-                gameState = new GameState(this.game);
-                State.setState(gameState);
+                isDead = true;
             }
         }
         return false;
+    }
+
+    public void resetPosition() {
+        this.setX(DEFAULT_X);
+        this.setY(DEFAULT_Y);
+    }
+
+    public int getScore() {
+        return this.score;
+    }
+
+    public int getHighScore() {
+        return highScore;
+    }
+
+    public int getTap() {
+        return this.tap;
+    }
+
+    public boolean isDead() {
+        return this.isDead;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public void setHighScore(int hscore) {
+        this.highScore = hscore;
     }
 }

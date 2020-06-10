@@ -1,9 +1,8 @@
 package Assets.Codes;
 
 import java.awt.*;
-// import java.io.File;
-// import java.io.IOException;
-
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class MenuState extends State {
@@ -13,16 +12,19 @@ public class MenuState extends State {
     // private Color titleColor;
     // private Font titleFont;
 
+    public Graphics g;
+
     private Font font;
 
     private Animation title;
 
-    private Audio au1, au2, au;
+    private Audio au;
+
+    private Icon icon;
 
     public MenuState(Game game) {
         super(game);
         Assets.init();
-
         // try {
         // GraphicsEnvironment ge =
         // GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -35,28 +37,39 @@ public class MenuState extends State {
         // titleColor = new Color(128, 0, 0);
         // titleFont = new Font("Century Gothic", Font.PLAIN, 35);
         font = new Font("", Font.BOLD, 30);
-
         title = new Animation(10, Assets.name);
-        au1 = new Audio("Ping.wav");
-        au2 = new Audio("select.wav");
-        au = new Audio("templeoftime.wav");
+        au = new Audio();
+        icon = new Icon() {
+
+            public int getIconHeight() {
+                return 32;
+            }
+
+            public int getIconWidth() {
+                return 32;
+            }
+
+            public void paintIcon(Component c, Graphics g, int x, int y) {
+                g.drawImage(new ImageIcon("Assets/Images/BackGround/logo.png").getImage(), x, y, 32, 32, null);
+            }
+        };
     }
 
     @Override
     public void update() {
         // TODO Auto-generated method stub
         if (game.getKeyManager().enter) {
-            au1.play();
+            au.playOneShot("Ping.wav");
             select();
             try {
-                Thread.sleep(100);
+                Thread.sleep(200);
             } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }
         if (game.getKeyManager().up) {
-            au2.play();
+            au.playOneShot("select.wav");
             try {
                 Thread.sleep(200);
                 if (currentChoice == 2) {
@@ -72,7 +85,7 @@ public class MenuState extends State {
             }
         }
         if (game.getKeyManager().down) {
-            au2.play();
+            au.playOneShot("select.wav");
             try {
                 Thread.sleep(200);
                 if (currentChoice == 0) {
@@ -94,7 +107,7 @@ public class MenuState extends State {
     @Override
     public void paint(Graphics g) {
         // TODO Auto-generated method stub
-        g.drawImage(Assets.background, 0, 0, null);
+        g.drawImage(Assets.background1, 0, 0, null);
         // g.drawImage(Assets.buttonPlay, 165, 150, null);
         // g.setColor(titleColor);
         // g.setFont(titleFont);
@@ -116,15 +129,22 @@ public class MenuState extends State {
 
     private void select() {
         if (currentChoice == 0) {
-            State.setState(game.getGameState());
-            au.play();
-
+            State.setState(new GameState(game));
         }
         if (currentChoice == 1) {
-            JOptionPane.showMessageDialog(null, "Use arrow key to attack the enemy", "Guide", 1);
+            JOptionPane.showMessageDialog(null,
+                    "Use arrow key or W A S D to attack the enemy\nESC or P to pause game\nAlt + F4 to exit", "Guide",
+                    0, icon);
         }
         if (currentChoice == 2) {
+            // game.stop();
             System.exit(0);
         }
+    }
+
+    @Override
+    public void run(Graphics g) {
+        // TODO Auto-generated method stub
+
     }
 }

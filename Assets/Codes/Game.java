@@ -10,7 +10,6 @@ public class Game implements Runnable {
     private Thread thread;
 
     private boolean isRunning = false;
-    private boolean isPause = false;
 
     private BufferStrategy bs;
     private Graphics g;
@@ -21,29 +20,21 @@ public class Game implements Runnable {
     private MouseManager mm;
     private KeyManager km;
 
-    private Audio au;
-
     public Game() {
         // init();
         mm = new MouseManager();
         km = new KeyManager();
-        au = new Audio("templeoftime.wav");
-    }
-
-    public State getGameState() {
-        return gameState;
     }
 
     private void init() {
         window = new Window();
         menuState = new MenuState(this);
-        gameState = new GameState(this);
+        //gameState = new GameState(this);
         window.getFrame().addKeyListener(km);
         window.getFrame().addMouseListener(mm);
         window.getFrame().addMouseMotionListener(mm);
         window.getCanvas().addMouseListener(mm);
         window.getCanvas().addMouseMotionListener(mm);
-
         State.setState(menuState);
     }
 
@@ -51,7 +42,7 @@ public class Game implements Runnable {
         km.update();
         if (State.getState() != null) {
             State.getState().update();
-
+            
         }
 
     }
@@ -81,14 +72,6 @@ public class Game implements Runnable {
         }
     }
 
-    public KeyManager getKeyManager() {
-        return km;
-    }
-
-    public boolean isRunning() {
-        return isRunning;
-    }
-
     public synchronized void start() {
         if (isRunning) {
             return;
@@ -105,14 +88,30 @@ public class Game implements Runnable {
         isRunning = false;
         try {
             thread.join();
-        } catch (final InterruptedException e) {
+        } catch (InterruptedException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
 
+    public KeyManager getKeyManager() {
+        return km;
+    }
+
+    public boolean isRunning() {
+        return isRunning;
+    }
+
     public MouseManager getMouseManager() {
         return mm;
+    }
+
+    public State getGameState() {
+        return gameState;
+    }
+
+    public State getMenuState() {
+        return menuState;
     }
 
 }

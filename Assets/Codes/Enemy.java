@@ -6,14 +6,33 @@ public class Enemy extends Entity {
 
     private Animation a;
     private short direction;
-    private float movementSpeed = 0.05f;
+    private float movementSpeed;
 
     public static final short fps = 20;
 
-    public Enemy(float x, float y, short direct) {
+    public Enemy(float x, float y, short direct, int lv) {
         super(x, y);
         Assets.init();
         this.direction = direct;
+        this.movementSpeed = 0.05f;
+        System.out.println(lv);
+        switch (lv) {
+            case 1:
+                this.movementSpeed = 0.1f;
+                break;
+            case 2:
+                this.movementSpeed = 0.15f;
+                break;
+            case 3:
+                this.movementSpeed = 0.2f;
+                break;
+            case 4:
+                this.movementSpeed = 0.3f;
+                break;
+            default:
+                break;
+        }
+        //System.out.println(this.movementSpeed);
         switch (direction) {
             case 1:
                 a = new Animation(fps, Assets.enemy_move_bot);
