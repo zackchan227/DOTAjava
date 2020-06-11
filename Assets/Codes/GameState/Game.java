@@ -1,4 +1,8 @@
-package Assets.Codes;
+package Assets.Codes.GameState;
+
+import Assets.Codes.Manager.KeyManager;
+import Assets.Codes.Manager.MouseManager;
+import Assets.Codes.Window.Window;
 
 import java.awt.image.BufferStrategy;
 import java.awt.Graphics;

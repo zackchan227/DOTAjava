@@ -1,4 +1,6 @@
-package Assets.Codes;
+package Assets.Codes.Entity;
+
+import Assets.Codes.Manager.Assets;
 
 import java.awt.Graphics;
 

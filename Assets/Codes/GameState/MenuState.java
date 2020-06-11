@@ -1,4 +1,8 @@
-package Assets.Codes;
+package Assets.Codes.GameState;
+
+import Assets.Codes.Manager.Assets;
+import Assets.Codes.Audio.Audio;
+import Assets.Codes.Entity.Animation;
 
 import java.awt.*;
 import javax.swing.Icon;

@@ -1,4 +1,6 @@
-package Assets.Codes;
+package Assets.Codes.Main;
+
+import Assets.Codes.GameState.Game;
 
 public class Application {
 

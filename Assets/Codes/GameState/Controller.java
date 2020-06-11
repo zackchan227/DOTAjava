@@ -1,4 +1,8 @@
-package Assets.Codes;
+package Assets.Codes.GameState;
+
+import Assets.Codes.Entity.Enemy;
+import Assets.Codes.Entity.Player;
+import Assets.Codes.Window.Level;
 
 import java.awt.*;
 import java.util.ArrayList;

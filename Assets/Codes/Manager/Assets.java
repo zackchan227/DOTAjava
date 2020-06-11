@@ -1,4 +1,4 @@
-package Assets.Codes;
+package Assets.Codes.Manager;
 
 import java.awt.image.BufferedImage;
 
@@ -15,28 +15,28 @@ public class Assets {
 
                 // Player's textures
                 SpriteSheet idle_front = new SpriteSheet(
-                                ImageLoader.loadImage("../Images/Player/Zeus/zeus_idle_front.png"));
+                                ImageLoader.loadImage("../../Images/Player/Zeus/zeus_idle_front.png"));
                 SpriteSheet idle_back = new SpriteSheet(
-                                ImageLoader.loadImage("../Images/Player/Zeus/zeus_idle_back.png"));
+                                ImageLoader.loadImage("../../Images/Player/Zeus/zeus_idle_back.png"));
                 SpriteSheet idle_left = new SpriteSheet(
-                                ImageLoader.loadImage("../Images/Player/Zeus/zeus_idle_left.png"));
+                                ImageLoader.loadImage("../../Images/Player/Zeus/zeus_idle_left.png"));
                 SpriteSheet idle_right = new SpriteSheet(
-                                ImageLoader.loadImage("../Images/Player/Zeus/zeus_idle_right.png"));
+                                ImageLoader.loadImage("../../Images/Player/Zeus/zeus_idle_right.png"));
 
                 SpriteSheet attack_front = new SpriteSheet(
-                                ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_front.png"));
+                                ImageLoader.loadImage("../../Images/Player/Zeus/zeus_attack_front.png"));
                 SpriteSheet attack_back = new SpriteSheet(
-                                ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_back.png"));
+                                ImageLoader.loadImage("../../Images/Player/Zeus/zeus_attack_back.png"));
                 // SpriteSheet attack_left = new
-                // SpriteSheet(ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_left.png"));
+                // SpriteSheet(ImageLoader.loadImage("../../Images/Player/Zeus/zeus_attack_left.png"));
                 // SpriteSheet attack_right = new
-                // SpriteSheet(ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_right.png"));
+                // SpriteSheet(ImageLoader.loadImage("../../Images/Player/Zeus/zeus_attack_right.png"));
 
                 // Enemy's textures
-                SpriteSheet move_right = new SpriteSheet(ImageLoader.loadImage("../Images/Creep/jugg.png"));
-                SpriteSheet move_left = new SpriteSheet(ImageLoader.loadImage("../Images/Creep/jugg.png"));
-                SpriteSheet move_top = new SpriteSheet(ImageLoader.loadImage("../Images/Creep/jugg.png"));
-                SpriteSheet move_bot = new SpriteSheet(ImageLoader.loadImage("../Images/Creep/jugg.png"));
+                SpriteSheet move_right = new SpriteSheet(ImageLoader.loadImage("../../Images/Creep/jugg.png"));
+                SpriteSheet move_left = new SpriteSheet(ImageLoader.loadImage("../../Images/Creep/jugg.png"));
+                SpriteSheet move_top = new SpriteSheet(ImageLoader.loadImage("../../Images/Creep/jugg.png"));
+                SpriteSheet move_bot = new SpriteSheet(ImageLoader.loadImage("../../Images/Creep/jugg.png"));
 
                 player_idle_front = new BufferedImage[3];
                 player_idle_front[0] = idle_front.crop(0, 0, 32, 32);
@@ -81,18 +81,18 @@ public class Assets {
                 player_attack_back[8] = attack_back.crop(143, 125, 36, 64);
 
                 player_attack_left = new BufferedImage[12];
-                player_attack_left[0] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_left_1.png");
-                player_attack_left[1] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_left_2.png");
-                player_attack_left[2] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_left_3.png");
-                player_attack_left[3] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_left_4.png");
-                player_attack_left[4] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_left_5.png");
-                player_attack_left[5] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_left_6.png");
-                player_attack_left[6] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_left_7.png");
-                player_attack_left[7] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_left_8.png");
-                player_attack_left[8] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_left_9.png");
-                player_attack_left[9] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_left_10.png");
-                player_attack_left[10] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_left_11.png");
-                player_attack_left[11] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_left_12.png");
+                player_attack_left[0] = ImageLoader.loadImage("../../Images/Player/Zeus/zeus_attack_left_1.png");
+                player_attack_left[1] = ImageLoader.loadImage("../../Images/Player/Zeus/zeus_attack_left_2.png");
+                player_attack_left[2] = ImageLoader.loadImage("../../Images/Player/Zeus/zeus_attack_left_3.png");
+                player_attack_left[3] = ImageLoader.loadImage("../../Images/Player/Zeus/zeus_attack_left_4.png");
+                player_attack_left[4] = ImageLoader.loadImage("../../Images/Player/Zeus/zeus_attack_left_5.png");
+                player_attack_left[5] = ImageLoader.loadImage("../../Images/Player/Zeus/zeus_attack_left_6.png");
+                player_attack_left[6] = ImageLoader.loadImage("../../Images/Player/Zeus/zeus_attack_left_7.png");
+                player_attack_left[7] = ImageLoader.loadImage("../../Images/Player/Zeus/zeus_attack_left_8.png");
+                player_attack_left[8] = ImageLoader.loadImage("../../Images/Player/Zeus/zeus_attack_left_9.png");
+                player_attack_left[9] = ImageLoader.loadImage("../../Images/Player/Zeus/zeus_attack_left_10.png");
+                player_attack_left[10] = ImageLoader.loadImage("../../Images/Player/Zeus/zeus_attack_left_11.png");
+                player_attack_left[11] = ImageLoader.loadImage("../../Images/Player/Zeus/zeus_attack_left_12.png");
                 // player_attack_left[0] = attack_left.crop(40, 1, 33, 64);
                 // player_attack_left[1] = attack_left.crop(120, 1, 32, 64);
                 // player_attack_left[2] = attack_left.crop(196, 1, 32, 64);
@@ -107,18 +107,18 @@ public class Assets {
                 // player_attack_left[11] = attack_left.crop(120, 236, 84, 64);
 
                 player_attack_right = new BufferedImage[12];
-                player_attack_right[0] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_right_1.png");
-                player_attack_right[1] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_right_2.png");
-                player_attack_right[2] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_right_3.png");
-                player_attack_right[3] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_right_4.png");
-                player_attack_right[4] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_right_5.png");
-                player_attack_right[5] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_right_6.png");
-                player_attack_right[6] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_right_7.png");
-                player_attack_right[7] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_right_8.png");
-                player_attack_right[8] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_right_9.png");
-                player_attack_right[9] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_right_10.png");
-                player_attack_right[10] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_right_11.png");
-                player_attack_right[11] = ImageLoader.loadImage("../Images/Player/Zeus/zeus_attack_right_12.png");
+                player_attack_right[0] = ImageLoader.loadImage("../../Images/Player/Zeus/zeus_attack_right_1.png");
+                player_attack_right[1] = ImageLoader.loadImage("../../Images/Player/Zeus/zeus_attack_right_2.png");
+                player_attack_right[2] = ImageLoader.loadImage("../../Images/Player/Zeus/zeus_attack_right_3.png");
+                player_attack_right[3] = ImageLoader.loadImage("../../Images/Player/Zeus/zeus_attack_right_4.png");
+                player_attack_right[4] = ImageLoader.loadImage("../../Images/Player/Zeus/zeus_attack_right_5.png");
+                player_attack_right[5] = ImageLoader.loadImage("../../Images/Player/Zeus/zeus_attack_right_6.png");
+                player_attack_right[6] = ImageLoader.loadImage("../../Images/Player/Zeus/zeus_attack_right_7.png");
+                player_attack_right[7] = ImageLoader.loadImage("../../Images/Player/Zeus/zeus_attack_right_8.png");
+                player_attack_right[8] = ImageLoader.loadImage("../../Images/Player/Zeus/zeus_attack_right_9.png");
+                player_attack_right[9] = ImageLoader.loadImage("../../Images/Player/Zeus/zeus_attack_right_10.png");
+                player_attack_right[10] = ImageLoader.loadImage("../../Images/Player/Zeus/zeus_attack_right_11.png");
+                player_attack_right[11] = ImageLoader.loadImage("../../Images/Player/Zeus/zeus_attack_right_12.png");
                 // player_attack_right[0] = attack_right.crop(15, 1, 32, 32);
                 // player_attack_right[1] = attack_right.crop(79, 1, 32, 32);
                 // player_attack_right[2] = attack_right.crop(143, 1, 32, 32);
@@ -157,26 +157,26 @@ public class Assets {
                 enemy_move_top[3] = move_top.crop(141, 191, 46, 63);
 
                 background = new BufferedImage[5];
-                background[0] = ImageLoader.loadImage("../Images/BackGround/bg_level_1.png");
+                background[0] = ImageLoader.loadImage("../../Images/BackGround/bg_level_1.png");
 
-                background1 = ImageLoader.loadImage("../Images/BackGround/bg_level_1.png");
-                background2 = ImageLoader.loadImage("../Images/BackGround/bg_level_2.png");
-                background3 = ImageLoader.loadImage("../Images/BackGround/bg_level_3.png");
-                background4 = ImageLoader.loadImage("../Images/BackGround/bg_level_4.png");
-                background5 = ImageLoader.loadImage("../Images/BackGround/bg_level_5.png");
+                background1 = ImageLoader.loadImage("../../Images/BackGround/bg_level_1.png");
+                background2 = ImageLoader.loadImage("../../Images/BackGround/bg_level_2.png");
+                background3 = ImageLoader.loadImage("../../Images/BackGround/bg_level_3.png");
+                background4 = ImageLoader.loadImage("../../Images/BackGround/bg_level_4.png");
+                background5 = ImageLoader.loadImage("../../Images/BackGround/bg_level_5.png");
 
-                buttonPlay = ImageLoader.loadImage("../Images/Other/buttonplay.png");
+                buttonPlay = ImageLoader.loadImage("../../Images/Other/buttonplay.png");
 
-                buttonPause = ImageLoader.loadImage("../Images/Other/pause.png");
+                buttonPause = ImageLoader.loadImage("../../Images/Other/pause.png");
 
-                buttonResume = ImageLoader.loadImage("../Images/Other/resume.png");
+                buttonResume = ImageLoader.loadImage("../../Images/Other/resume.png");
 
                 name = new BufferedImage[5];
-                name[0] = ImageLoader.loadImage("../Images/Other/DOTA/dota1.png");
-                name[1] = ImageLoader.loadImage("../Images/Other/DOTA/dota2.png");
-                name[2] = ImageLoader.loadImage("../Images/Other/DOTA/dota3.png");
-                name[3] = ImageLoader.loadImage("../Images/Other/DOTA/dota4.png");
-                name[4] = ImageLoader.loadImage("../Images/Other/DOTA/dota5.png");
+                name[0] = ImageLoader.loadImage("../../Images/Other/DOTA/dota1.png");
+                name[1] = ImageLoader.loadImage("../../Images/Other/DOTA/dota2.png");
+                name[2] = ImageLoader.loadImage("../../Images/Other/DOTA/dota3.png");
+                name[3] = ImageLoader.loadImage("../../Images/Other/DOTA/dota4.png");
+                name[4] = ImageLoader.loadImage("../../Images/Other/DOTA/dota5.png");
 
         }
 }

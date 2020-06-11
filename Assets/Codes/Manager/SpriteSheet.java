@@ -1,4 +1,4 @@
-package Assets.Codes;
+package Assets.Codes.Manager;
 
 import java.awt.image.BufferedImage;
 

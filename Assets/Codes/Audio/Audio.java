@@ -1,4 +1,4 @@
-package Assets.Codes;
+package Assets.Codes.Audio;
 
 import javax.sound.sampled.*;
 import java.io.IOException;
@@ -18,7 +18,7 @@ public class Audio {
     public Audio(String file) {
         try {
             fileName = file;
-            audio = AudioSystem.getAudioInputStream(getClass().getResource("../Sounds/" + fileName));
+            audio = AudioSystem.getAudioInputStream(getClass().getResource("../../Sounds/" + fileName));
             clip = AudioSystem.getClip();
             clip.open(audio);
             isPause = false;
@@ -76,7 +76,7 @@ public class Audio {
     // Method to reset audio stream
     public void resetAudioStream() {
         try {
-            audio = AudioSystem.getAudioInputStream(getClass().getResource("../Sounds/" + fileName));
+            audio = AudioSystem.getAudioInputStream(getClass().getResource("../../Sounds/" + fileName));
             clip.open(audio);
             clip.loop(Clip.LOOP_CONTINUOUSLY);
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {

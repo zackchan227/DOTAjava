@@ -1,6 +1,9 @@
-package Assets.Codes;
+package Assets.Codes.Entity;
 
-import javax.swing.*;
+import Assets.Codes.Manager.Assets;
+import Assets.Codes.Audio.Audio;
+import Assets.Codes.GameState.Game;
+
 import java.awt.Graphics;
 
 public class Player extends Entity {
@@ -15,7 +18,7 @@ public class Player extends Entity {
     private int tap;
     private int attackRange = 50;
 
-    public static final short fps = 30;
+    public static final short fps = 100;
 
     public static final float DEFAULT_X = 223.0f;
     public static final float DEFAULT_Y = 160.0f;

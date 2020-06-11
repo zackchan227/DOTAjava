@@ -1,4 +1,4 @@
-package Assets.Codes;
+package Assets.Codes.Window;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;

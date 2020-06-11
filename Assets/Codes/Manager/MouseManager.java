@@ -1,4 +1,4 @@
-package Assets.Codes;
+package Assets.Codes.Manager;
 
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;

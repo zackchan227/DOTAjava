@@ -1,4 +1,9 @@
-package Assets.Codes;
+package Assets.Codes.GameState;
+
+import Assets.Codes.Audio.Audio;
+import Assets.Codes.Entity.Player;
+import Assets.Codes.Manager.Assets;
+import Assets.Codes.Window.Level;
 
 import java.awt.Graphics;
 import java.io.BufferedReader;
@@ -13,7 +18,6 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-import java.awt.image.BufferedImage;
 import java.awt.Component;
 import java.awt.Font;
 
@@ -182,13 +186,12 @@ public class GameState extends State {
         int option = JOptionPane.showConfirmDialog(null,
                 "Your score: " + p.getScore() + "\nHigh score: " + p.getHighScore()+"\nDo you want to retry ?", "Score", JOptionPane.YES_NO_OPTION,
                 JOptionPane.WARNING_MESSAGE, icon);
-
+        setHighscore();
+        p.setScore(0);
         if (option == JOptionPane.NO_OPTION) {
             State.setState(game.getMenuState());
         }
         if (option == JOptionPane.YES_OPTION) {
-            setHighscore();
-            p.setScore(0);
             State.setState(new GameState(game));
         }
     }

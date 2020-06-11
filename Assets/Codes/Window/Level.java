@@ -1,4 +1,6 @@
-package Assets.Codes;
+package Assets.Codes.Window;
+
+import Assets.Codes.Entity.Player;
 
 public class Level {
 

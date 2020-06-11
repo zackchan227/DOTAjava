@@ -1,4 +1,4 @@
-package Assets.Codes;
+package Assets.Codes.GameState;
 
 import java.awt.Graphics;
 
