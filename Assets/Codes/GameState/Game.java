@@ -19,13 +19,11 @@ public class Game implements Runnable {
     private Graphics g;
 
     private State menuState;
-    private State gameState;
 
     private MouseManager mm;
     private KeyManager km;
 
     public Game() {
-        // init();
         mm = new MouseManager();
         km = new KeyManager();
     }
@@ -33,7 +31,6 @@ public class Game implements Runnable {
     private void init() {
         window = new Window();
         menuState = new MenuState(this);
-        //gameState = new GameState(this);
         window.getFrame().addKeyListener(km);
         window.getFrame().addMouseListener(mm);
         window.getFrame().addMouseMotionListener(mm);
@@ -85,19 +82,6 @@ public class Game implements Runnable {
         thread.start();
     }
 
-    public synchronized void stop() {
-        if (!isRunning) {
-            return;
-        }
-        isRunning = false;
-        try {
-            thread.join();
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
-
     public KeyManager getKeyManager() {
         return km;
     }
@@ -108,10 +92,6 @@ public class Game implements Runnable {
 
     public MouseManager getMouseManager() {
         return mm;
-    }
-
-    public State getGameState() {
-        return gameState;
     }
 
     public State getMenuState() {

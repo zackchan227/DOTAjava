@@ -27,8 +27,12 @@ public class GameState extends State {
     private Controller c;
     private boolean isPause;
     private Audio au;
-    private boolean isRunning;
+    private static boolean isRunning;
     private Level lv;
+
+    public static boolean isRunning() {
+        return isRunning;
+    }
 
     private static final String saveDataPath = "./Assets/Save/";
     private static final String fileName = "HighScore.dat";
@@ -52,7 +56,7 @@ public class GameState extends State {
         if (!isPause && getState() == this) {
             p.update();
             c.update(p);
-            if (game.getKeyManager().pause) {
+            if (game.getKeyManager().pause || game.getMouseManager().isPausePressed()) {
                 isPause = true;
                 au.pause();
                 try {
@@ -63,7 +67,7 @@ public class GameState extends State {
                 }
             }
         } else {
-            if (game.getKeyManager().pause) {
+            if (game.getKeyManager().pause || game.getMouseManager().isPausePressed()) {
                 isPause = false;
                 au.resume();
                 try {
@@ -94,7 +98,6 @@ public class GameState extends State {
         c.paint(g);
         Font font = new Font("", Font.BOLD, 30);
         g.setFont(font);
-        // g.drawString("Tap: "+p.getTap(),20,350);
         g.drawString("Score: " + p.getScore(), 20, 300);
         g.drawString("High Score: " + p.getHighScore(), 20, 350);
         if (isPause) {
@@ -189,21 +192,12 @@ public class GameState extends State {
         setHighscore();
         p.setScore(0);
         if (option == JOptionPane.NO_OPTION) {
+            isRunning = false;
             State.setState(game.getMenuState());
         }
         if (option == JOptionPane.YES_OPTION) {
             State.setState(new GameState(game));
         }
-    }
-
-    @Override
-    public void run(Graphics g) {
-        // TODO Auto-generated method stub
-        // au.playSound("templeoftime.wav");
-        // while (isRunning) {
-        // update();
-        // paint(g);
-        // }
     }
 
 }

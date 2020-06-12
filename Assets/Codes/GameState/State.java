@@ -22,5 +22,4 @@ public abstract class State {
 
     public abstract void update();
     public abstract void paint(Graphics g);
-    public abstract void run(Graphics g);
 }

@@ -13,8 +13,6 @@ public class MenuState extends State {
 
     private int currentChoice = 0;
     private String[] options = { "Start", "Help", "Quit" };
-    // private Color titleColor;
-    // private Font titleFont;
 
     public Graphics g;
 
@@ -26,20 +24,13 @@ public class MenuState extends State {
 
     private Icon icon;
 
+    public void setCurrentChoice(int currentChoice) {
+        this.currentChoice = currentChoice;
+    }
+
     public MenuState(Game game) {
         super(game);
         Assets.init();
-        // try {
-        // GraphicsEnvironment ge =
-        // GraphicsEnvironment.getLocalGraphicsEnvironment();
-        // ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new
-        // File("../Font/CuteFont.TTF")));
-        // } catch (IOException|FontFormatException e) {
-        // //Handle exception
-        // }
-
-        // titleColor = new Color(128, 0, 0);
-        // titleFont = new Font("Century Gothic", Font.PLAIN, 35);
         font = new Font("", Font.BOLD, 30);
         title = new Animation(10, Assets.name);
         au = new Audio();
@@ -104,6 +95,21 @@ public class MenuState extends State {
                 e.printStackTrace();
             }
         }
+        if(game.getMouseManager().isPlayPressed()){
+            currentChoice = 0;
+            au.playOneShot("Ping.wav");
+            select();
+        }
+        if(game.getMouseManager().isHelpPressed()){
+            currentChoice = 1;
+            au.playOneShot("Ping.wav");
+            select();
+        }
+        if(game.getMouseManager().isQuitPressed()){
+            currentChoice = 2;
+            au.playOneShot("Ping.wav");
+            select();
+        }
         title.update();
 
     }
@@ -112,10 +118,6 @@ public class MenuState extends State {
     public void paint(Graphics g) {
         // TODO Auto-generated method stub
         g.drawImage(Assets.background1, 0, 0, null);
-        // g.drawImage(Assets.buttonPlay, 165, 150, null);
-        // g.setColor(titleColor);
-        // g.setFont(titleFont);
-        // g.drawString("DOTA", 195, 60);
         g.drawImage(title.getCurrentFrame(), 120, 30, null);
 
         // draw menu options
@@ -141,14 +143,8 @@ public class MenuState extends State {
                     0, icon);
         }
         if (currentChoice == 2) {
-            // game.stop();
             System.exit(0);
         }
     }
 
-    @Override
-    public void run(Graphics g) {
-        // TODO Auto-generated method stub
-
-    }
 }
